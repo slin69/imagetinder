@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form>
+<div class="mb-3">
+<img  class="form-control,center" style="width:400px;height:400px;" id="1"  src="data:;base64,{{ r[1] }}" />
+<label style="font-size:50px;" > &#128077;: {{f[1].likes}}</label>
+<div class="mb-3">
+    <button style="font-size:50px;"type="button" class="form-group" onClick="like({{f[1].id}})">👍</button>
+    <button type="button" style="position:relative;left:25vh;font-size:50px;" class="form-group" onClick="dislike({{f[1].id}})">👎</button>
+    
+</div>
+</div>
+</form>
+
+
+
+<script
+type="text/javascript"
+>
+function like(n){
+    console.log(n)
+    console.log("shit")
+    fetch("/like",{
+        method:"POST",
+        body:JSON.stringify({n:n}),
+
+    }).then((_res)=>{
+        window.location.href='/image';
+    });
+}
+ 
+function dislike(n){
+    console.log(n)
+    console.log("shit")
+    fetch("/dislike",{
+        method:"POST",
+        body:JSON.stringify({n:n}),
+
+    }).then((_res)=>{
+        window.location.href='/image';
+    });
+}
+console.log("shuit")
+</script>
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+{% endblock %}

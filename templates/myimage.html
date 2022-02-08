@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form>
+    {% for x in range(i|length)%}
+    <img style="width:200px;height:200px;" src="data:;base64,{{ i[x] }}">
+    <label>&#128077;: {{n[x].likes}}</label>
+</form>
+
+{% endfor %}
+{% endblock %}
